@@ -1,0 +1,19 @@
+.Playlist {
+    
+}
+
+.Videos {
+    list-style: none;
+    padding: 0;
+    width: 50vw;
+}
+
+.Video {
+    background-color: lightgray;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.Video:hover {
+    background-color: salmon;
+}
