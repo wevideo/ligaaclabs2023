@@ -1,0 +1,37 @@
+[
+    {
+        "id": 1,
+        "src": "/videos/video-1.mp4",
+        "thumb": "",
+        "title": "Video 1",
+        "description": "Video about something"
+    },
+    {
+        "id": 2,
+        "src": "/videos/video-2.mp4",
+        "thumb": "",
+        "title": "Video 2",
+        "description": "Video about something else"
+    },
+    {
+        "id": 3,
+        "src": "/videos/video-3.mp4",
+        "thumb": "",
+        "title": "Video 3",
+        "description": "Video about something"
+    },
+    {
+        "id": 4,
+        "src": "/videos/video-4.mp4",
+        "thumb": "",
+        "title": "Video 4",
+        "description": "Video about something"
+    },
+    {
+        "id": 5,
+        "src": "/videos/video-5.mp4",
+        "thumb": "",
+        "title": "Video 5",
+        "description": "Video about something"
+    }
+]
