@@ -33,6 +33,16 @@ export function Comments() {
         }
     }
 
+    const editComment = (commentId, message) => {
+        const editedComments = comments.map(comment => {
+            if (comment.id === commentId) {
+                return {...comment, message}
+            }
+            return comment;
+        })
+        setComments(editedComments);
+    }
+
     return (
         <div>
             <input type="text" onKeyDown={onEnter}/>
@@ -40,7 +50,9 @@ export function Comments() {
                 {comments.filter(comment => comment.videoId === currentVideo.id)
                     .reverse().map(({id, message}) => (
                         <li key={id} className="Comment">
-                            <p contentEditable>{message}</p>
+                            <p contentEditable 
+                               onBlur={(event)=> editComment(id, event.target.innerHTML)} 
+                               dangerouslySetInnerHTML={{__html: message}}/>
                             <span className="material-symbols-outlined md-24 Delete"
                                   onClick={() => deleteComment(id)}>delete</span>
                         </li>))}
