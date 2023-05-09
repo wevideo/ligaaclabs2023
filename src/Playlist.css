@@ -1,16 +1,18 @@
 .Playlist {
-    
+    width: 100%;
 }
 
 .Videos {
     list-style: none;
-    padding: 0;
-    width: 50vw;
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 240px);
+    grid-gap: 16px;
+    grid-auto-rows: 135px;
 }
 
 .Video {
     background-color: lightgray;
-    margin-bottom: 10px;
     cursor: pointer;
 }
 
