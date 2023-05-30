@@ -4,18 +4,27 @@
 
 .Videos {
     list-style: none;
-    padding: 16px;
+    padding: 32px;
     display: grid;
     grid-template-columns: repeat(auto-fit, 240px);
-    grid-gap: 16px;
-    grid-auto-rows: 135px;
+    grid-gap: 32px;
+    grid-auto-rows: 360px;
 }
 
 .Video {
     background-color: lightgray;
     cursor: pointer;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, .7);
 }
 
 .Video:hover {
     background-color: salmon;
+}
+
+.Video-selected {
+    box-shadow: 0px 0px 0px 12px salmon, 2px 2px 12px rgba(0, 0, 0, .7);
+}
+
+.Video video {
+    object-fit: cover;
 }

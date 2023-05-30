@@ -1,13 +1,12 @@
 import { useRef, forwardRef, useImperativeHandle } from "react";
-import { useVideo } from "./useVideo";
+import { useVideoLoop } from "./useVideoLoop";
 
-export const VideoThumnail = forwardRef(function VideoThumnail(
+export const VideoThumbnail = forwardRef(function VideoThumbnail(
   { source },
   ref
 ) {
   const videoRef = useRef();
-
-  const { togglePlayback } = useVideo(videoRef);
+  const { togglePlayback } = useVideoLoop(videoRef);
 
   useImperativeHandle(ref, () => {
     return {
@@ -19,7 +18,7 @@ export const VideoThumnail = forwardRef(function VideoThumnail(
     <video
       ref={videoRef}
       width={240}
-      height={135}
+      height={360}
       controls={false}
       muted={true}
     >

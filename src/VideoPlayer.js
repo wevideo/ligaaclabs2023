@@ -1,14 +1,12 @@
-import { useContext, useEffect, useRef } from "react";
-import { VideoContext } from "./App";
+import "./VideoPlayer.css";
+import { useEffect, useRef } from "react";
 import { Comments } from "./Comments";
 import { useVideo } from "./useVideo";
 
-function VideoPlayer() {
+function VideoPlayer({ currentVideo }) {
   const videoRef = useRef();
 
-  const {
-    currentVideo: { src, title },
-  } = useContext(VideoContext);
+  const { src, title } = currentVideo ? currentVideo : { src: null, title: null, id: -1 };
 
   const {
     isPlaying,
@@ -27,8 +25,8 @@ function VideoPlayer() {
   }, [src]);
 
   return (
-    <div>
-      <video ref={videoRef} width={300} height={200} controls={false}>
+    <div className="VideoPlayer">
+      <video ref={videoRef} width={600} height={338} controls={false} autoPlay={true}>
         <source src={src}></source>
       </video>
       <div>

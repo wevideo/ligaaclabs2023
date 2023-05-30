@@ -1,18 +1,21 @@
 import "./Playlist.css";
-import { useContext, useRef } from "react";
+import { startTransition, useCallback, useContext, useEffect, useRef, useState } from "react";
 import { VideoContext } from "./App";
-import { VideoThumnail } from "./VideoThumnail";
+import { VideoThumbnail } from "./VideoThumbnail";
+import { createPortal, flushSync } from "react-dom";
+import VideoPlayer from "./VideoPlayer";
+import { Modal } from "./Modal";
 
 function Playlist() {
-  const { videos, setCurrentVideo } = useContext(VideoContext);
+  const { videos, currentVideo, setCurrentVideo } = useContext(VideoContext);
   return (
     <div className="Playlist">
-      <h3>My playlist:</h3>
       <ul className="Videos">
         {videos.map((item) => (
           <VideoItem
             key={item.id}
             item={item}
+            selected={currentVideo && currentVideo.id === item.id}
             setCurrentVideo={setCurrentVideo}
           />
         ))}
@@ -21,20 +24,32 @@ function Playlist() {
   );
 }
 
-function VideoItem({ item, setCurrentVideo }) {
+function VideoItem({ item, selected, setCurrentVideo }) {
   const ref = useRef();
-
+  const [open, setOpen] = useState(false);
   const togglePlayback = () => ref.current.togglePlayback();
 
+  const handleOpen = () => {
+    togglePlayback();
+    setCurrentVideo(item);
+    setOpen(true);
+  }
+
   return (
-    <li
-      onClick={() => setCurrentVideo(item)}
-      className="Video"
-      onMouseEnter={togglePlayback}
-      onMouseLeave={togglePlayback}
-    >
-      <VideoThumnail source={item.src} ref={ref} />
-    </li>
+    <>
+      <li
+        onClick={handleOpen}
+        className={`Video ${selected ? "Video-selected" : ""}`}
+        onMouseEnter={togglePlayback}
+        onMouseLeave={togglePlayback}
+      >
+        <VideoThumbnail source={item.src} ref={ref} />
+      </li>
+
+      <Modal onClose={() => setOpen(false)} open={open}>
+        <VideoPlayer currentVideo={item} />
+      </Modal>
+    </>
   );
 }
 

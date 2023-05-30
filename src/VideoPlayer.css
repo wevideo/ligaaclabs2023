@@ -1,0 +1,14 @@
+.VideoPlayer {
+    width: 600px;
+    height: 600px;
+}
+
+.VideoPlayer>video {
+    background-color: #000;
+}
+
+.VideoPlayerClose {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+}
