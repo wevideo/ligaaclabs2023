@@ -2,6 +2,7 @@ import "./VideoPlayer.css";
 import { useEffect, useRef } from "react";
 import { Comments } from "./Comments";
 import { useVideo } from "./useVideo";
+import { Button } from "./uikit/Button";
 
 function VideoPlayer({ currentVideo }) {
   const videoRef = useRef();
@@ -30,7 +31,9 @@ function VideoPlayer({ currentVideo }) {
         <source src={src}></source>
       </video>
       <div>
-        <button onClick={togglePlayback}>{isPlaying ? "Pause" : "Play"}</button>
+        <Button variant="contained" color="success" onClick={togglePlayback}>Button
+          {isPlaying ? "Pause" : "Play"}
+        </Button>
         <p>{formatTime(time) + " / " + formatTime(duration)}</p>
         <input
           type="range"
@@ -41,7 +44,9 @@ function VideoPlayer({ currentVideo }) {
           onChange={(event) => updateTime(event.target.value)}
         />
         <br />
-        <button onClick={toggleMute}>{isMuted ? "Unmute" : "Mute"}</button>
+        <Button variant="contained" onClick={toggleMute}>
+          {isMuted ? "Unmute" : "Mute"}
+        </Button>
         <p>{parseInt(volume * 100)}</p>
         <input
           type="range"
