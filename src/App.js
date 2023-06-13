@@ -8,19 +8,22 @@ import { createContext, useState } from "react";
 export const VideoContext = createContext(null);
 
 function App() {
-    const [currentVideo, setCurrentVideo] = useState(null);
+  const [currentVideo, setCurrentVideo] = useState(null);
 
-    return (
-        <VideoContext.Provider value={{ videos, currentVideo, setCurrentVideo }}>
-            <div className="App">
-                <CustomHeader title={"LigaAC Player"}></CustomHeader>
-                <main style={{ display: "flex", justifyContent: "space-between" }}>
-                    <Playlist />
-                </main>
-                <CustomFooter />
-            </div>
-        </VideoContext.Provider>
-    );
+  return (
+    <VideoContext.Provider value={{ videos, currentVideo, setCurrentVideo }}>
+      <div className="App">
+        <CustomHeader title={"LigaAC Player"}></CustomHeader>
+        <h1>
+          This week's special: <a href="/starwars">Star Wars: all episodes</a>
+        </h1>
+        <main style={{ display: "flex", justifyContent: "space-between" }}>
+          <Playlist />
+        </main>
+        <CustomFooter />
+      </div>
+    </VideoContext.Provider>
+  );
 }
 
 export default App;

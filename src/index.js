@@ -4,6 +4,9 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { StarWars } from "./pages/StarWars";
+import { Episode } from "./pages/Episode";
 
 const darkTheme = createTheme({
   palette: {
@@ -11,16 +14,33 @@ const darkTheme = createTheme({
   },
 });
 
-const lightTheme = createTheme({
-  mode: "light",
-});
+// const lightTheme = createTheme({
+//   mode: "light",
+// });
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+  },
+  {
+    path: "/starwars",
+    element: <StarWars />,
+  },
+  {
+    path: "/episode/:id/",
+    element: <Episode />,
+  },
+]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeProvider theme={darkTheme}>
-      <App />
-    </ThemeProvider>
+    <RouterProvider router={router}>
+      <ThemeProvider theme={darkTheme}>
+        <App />
+      </ThemeProvider>
+    </RouterProvider>
   </React.StrictMode>
 );
 

@@ -1,8 +1,7 @@
 import "./Playlist.css";
-import { startTransition, useCallback, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { VideoContext } from "./App";
 import { VideoThumbnail } from "./VideoThumbnail";
-import { createPortal, flushSync } from "react-dom";
 import VideoPlayer from "./VideoPlayer";
 import { Modal } from "./Modal";
 
@@ -33,7 +32,7 @@ function VideoItem({ item, selected, setCurrentVideo }) {
     togglePlayback();
     setCurrentVideo(item);
     setOpen(true);
-  }
+  };
 
   return (
     <>
